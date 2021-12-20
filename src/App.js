@@ -1,28 +1,35 @@
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-import Home from './componants/Home/Home';
-import AddUser from './componants/AddUser/AddUser';
-import UpdateUser from './componants/UpdateUser/UpdateUser';
-import Users from './componants/Users/Users';
-import Header from './componants/Header/Header';
+import AddUser from "./componants/AddUser/AddUser";
+import Header from "./componants/Header/Header";
+import Home from "./componants/Home/Home";
+import UpdateUser from "./componants/UpdateUser/UpdateUser";
+import Users from "./componants/Users/Users";
+
+
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Header></Header>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<AddUser />} />
-          <Route path="/register" element={<Users />} />
-          <Route path="/register" element={<UpdateUser />} />
-        </Routes>
-      </BrowserRouter>
+      <Router>
+        <div>
+          <Header></Header>
+          <Switch>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route exact path="/users">
+              <Users></Users>
+            </Route>
+            <Route path="/users/add">
+              <AddUser></AddUser>
+            </Route>
+            <Route path="/users/update/:id">
+              <UpdateUser></UpdateUser>
+            </Route>
+
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
