@@ -9,10 +9,12 @@ import Home from './componants/Home/Home';
 import AddUser from './componants/AddUser/AddUser';
 import UpdateUser from './componants/UpdateUser/UpdateUser';
 import Users from './componants/Users/Users';
+import Header from './componants/Header/Header';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Header></Header>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
